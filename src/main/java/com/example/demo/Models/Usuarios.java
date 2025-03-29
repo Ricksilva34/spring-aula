@@ -1,24 +1,21 @@
 package com.example.demo.Models;
 
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
+
 public class Usuarios {
 
-
-    private String id;
+    @NotBlank(message = "Nome não pode estar em branco")
     private String nome;
 
-    // Construtor
-    public Usuarios(String id, String nome) {
-        this.id = id;
+    @CPF(message = "CPF inválido")
+    private String cpf;
+
+    public Usuarios() {}
+
+    public Usuarios(String nome, String cpf) {
         this.nome = nome;
-    }
-
-    // Getters e Setters
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -27,5 +24,13 @@ public class Usuarios {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }
